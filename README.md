@@ -4,8 +4,8 @@ This is very use case specific plugin to suit my own needs, but I'd
 like to expand it to be a more general purpose AWS plugin; pull
 requests welcomed!
 
-Right it it supposed uploading files to s3 via the s3-put subtask,
-running and terminating jobflow via the run-flow and terminate-job
+Right it it supposed uploading files to s3 via the `s3-put` subtask,
+running and terminating jobflow via the `run-flow` and `terminate-job`
 subtask respectively. It is based on the awesome
 [amazonica](https://github.com/mcohen01/amazonica) library.
 
