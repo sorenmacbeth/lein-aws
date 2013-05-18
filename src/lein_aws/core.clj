@@ -35,12 +35,19 @@
       (when-let [id (:job-flow-id (run-job-flow flow))]
         (println (format "job-flow %s starting..." id))
         (loop [status (describe-job-flows :job-flow-ids [id])]
-          (if-not (= (-> status :job-flows first :execution-status-detail :state) "RUNNING")
-            (do
-              (Thread/sleep 10000)
-              (recur (describe-job-flows :job-flow-ids [id])))
-            (println (format "job-flow %s running. master public dns: %s" id
-                             (-> status :job-flows first :instances :master-public-dns-name)))))))))
+          (case (-> status :job-flows first :execution-status-detail :state)
+            "STARTING" (do
+                         (Thread/sleep 10000)
+                         (recur (describe-job-flows :job-flow-ids [id])))
+            "BOOTSTRAPPING" (do
+                              (println (format "job-flow %s bootstrapping..." id))
+                              (Thread/sleep 10000)
+                              (recur (describe-job-flows :job-flow-ids [id])))
+            "RUNNING" (println (format "job-flow %s running. master public dns: %s"
+                                       id
+                                       (-> status :job-flows first :instances :master-public-dns-name)))
+            "TERMINATED" (println (format "job-flow %s terminated" id))
+            "FAILED" (println (format "job-flow %s failed" id))))))))
 
 (defn terminate-flow
   "Terminate the elastic mapreduce jobflows `ids`"
