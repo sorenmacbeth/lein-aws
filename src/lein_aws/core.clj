@@ -47,6 +47,7 @@
                                        id
                                        (-> status :job-flows first :instances :master-public-dns-name)))
             "TERMINATED" (println (format "job-flow %s terminated" id))
+            "SHUTTING_DOWN" (println (format "job-flow %s is shutting down" id))
             "FAILED" (println (format "job-flow %s failed" id))))))))
 
 (defn terminate-flow
