@@ -30,7 +30,7 @@
 (defn run-flow
   "Launch the elastic mapreduce jobflow `name` specified in the file at `path`"
   [project [flow-name path]]
-  (let [flow-name (parse-flow flow-name)
+  (let [flow-name (keyword flow-name)
         config (:aws project)
         job-flows (parse-flow path)
         flow (get job-flows flow-name)]

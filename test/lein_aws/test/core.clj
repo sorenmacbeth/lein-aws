@@ -5,5 +5,3 @@
 (deftest test-parse-config-files
   (let [flow (core/parse-flow "test/resources/job_flow.clj")]
     (is (= :my-flow (ffirst flow)))))
-
-
