@@ -1,4 +1,4 @@
-(defproject lein-aws "0.1.3"
+(defproject lein-aws "0.1.4-SNAPSHOT"
   :description "A plugin for interacting with the Amazon AWS API"
   :url "https://github.com/sorenmacbeth/lein-aws"
   :license {:name "Eclipse Public License"
