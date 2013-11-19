@@ -19,4 +19,5 @@
        :key key
        :file f
        :access-control-list
-       {:grant-all acl}))))
+       {:grant-all acl})
+      (println "done."))))
