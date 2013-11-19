@@ -6,6 +6,9 @@
   "Puts the file at `path` to `bucket` with ACL `acl`."
   [project [acl bucket path]]
   (let [config (:aws project)
+        uberjar-name (or (:uberjar-name project) (str (:name project) "-" (:version project) "-standalone.jar"))
+        path (when-not path
+               (str "target/" uberjar-name))
         f (clojure.java.io/file path)
         key (.getName f)
         acl (case acl
