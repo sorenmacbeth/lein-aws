@@ -88,13 +88,13 @@ You need to let the plugin know about your aws credentils:
 
 Use this for user-level plugins:
 
-Put `[lein-aws "0.1.3"]` into the `:plugins` vector of your
+Put `[lein-aws "0.1.4-SNAPSHOT"]` into the `:plugins` vector of your
 `:user` profile, or if you are on Leiningen 1.x do `lein plugin install
-lein-aws 0.1.3`.
+lein-aws 0.1.4-SNAPSHOT`.
 
 Use this for project-level plugins:
 
-Put `[lein-aws "0.1.3"]` into the `:plugins` vector of your project.clj.
+Put `[lein-aws "0.1.4-SNAPSHOT"]` into the `:plugins` vector of your project.clj.
 
     $ lein help aws
 
